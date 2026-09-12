@@ -1,8 +1,8 @@
-# Contributing
+# Contributing to AIAI Skills
 
-Skills should be **specific**, **verifiable**, **battle-tested**, and **minimal**.
+Thank you for your interest in contributing to AIAI Skills repository! Please ensure that your contribution follows our below guidelines.
 
-## Adding a New Skill
+## Adding Skill
 
 ### Before proposing a new skill
 
@@ -15,11 +15,15 @@ Many proposals overlap with an existing skill. Before opening one:
 
 ### Creating the skill
 
-1. Create a directory under `skills/` with a kebab-case name.
-2. Add a `SKILL.md` following the format in `docs/skill-anatomy.md`.
-3. Include YAML frontmatter with `name` and `description` fields.
-4. Ensure the `description` starts with what the skill does, then includes one or more `Use when` trigger conditions.
-5. Add one row to the `All Skills` table in `README.md`.
+End to end, in order:
+
+1. Scaffold `skills/<kebab-case-name>/` and copy the skeleton from `docs/skill-anatomy.md`.
+2. Write the frontmatter (`name` equals the directory; `description` states what + `Use when` triggers).
+3. Write the four anatomy sections: Overview, When to Use, Process, Verification.
+4. Add optional folders (`references/`, `scripts/`, `assets/`) only if the skill needs them.
+5. Self-review against the checklist in `docs/skill-anatomy.md`.
+6. Add one row to the `All Skills` table in `README.md`.
+7. Open a PR from a short-lived feature branch (`skill/<name>` for skills, `docs/<topic>` for docs) with a conventional commit message (`feat:`, `docs:`, `fix:`).
 
 ### Skill Quality Bar
 
@@ -52,7 +56,7 @@ Every new skill must have:
 - Test that YAML frontmatter remains valid after edits.
 - If your idea is a refinement of an existing skill, prefer a focused edit to that skill over a new directory.
 
-## Skill Directory Structure
+## Skill's Directory Structure
 
 ```
 .
@@ -96,6 +100,7 @@ Before opening a PR, confirm:
 - [ ] Written entirely in English (no translated copies).
 - [ ] No org names, no TODO/TBD placeholders.
 - [ ] File sizes respect the Quality Standards below.
+- [ ] PR comes from a short-lived feature branch with a conventional commit message.
 
 ## Quality Standards
 
