@@ -2,45 +2,50 @@
 
 Thank you for your interest in contributing to AIAI Skills repository! Please ensure that your contribution follows our below guidelines.
 
-## Adding Skill
+## Adding Skills
 
 ### Before proposing a new skill
 
 Many proposals overlap with an existing skill. Before opening one:
 
-1. **Search the catalog.** Browse the `All Skills` table in the `README.md` and skim `skills/` for an existing skill that covers your idea, whole or in part.
+1. **Search the catalog.** Browse the [Skills board](./README.md#skills-board) and skim `skills/` for an existing skill that covers your idea, whole or in part.
 2. **Check open PRs and issues** for proposals on the same topic. Don't add a duplicate.
 3. **Read the anatomy.** Confirm your idea fits the format in `docs/skill-anatomy.md`: an actionable workflow with verification, not vague advice.
 4. **Justify the gap in your PR description.** State explicitly why this isn't covered by an existing skill. If it overlaps, propose extending the existing skill instead of adding a new one.
 
-### Creating the skill
+### Creating Skill
 
-End to end, in order:
+A skill is a folder under `skills/`. The folder name is the skill name and must match
+the `name` in its frontmatter.
 
-1. Scaffold `skills/<kebab-case-name>/` and copy the skeleton from `docs/skill-anatomy.md`.
-2. Write the frontmatter (`name` equals the directory; `description` states what + `Use when` triggers).
-3. Write the four anatomy sections: Overview, When to Use, Process, Verification.
-4. Add optional folders (`references/`, `scripts/`, `assets/`) only if the skill needs them.
-5. Self-review against the checklist in `docs/skill-anatomy.md`.
-6. Add one row to the `All Skills` table in `README.md`.
-7. Open a PR from a short-lived feature branch (`skill/<name>` for skills, `docs/<topic>` for docs) with a conventional commit message (`feat:`, `docs:`, `fix:`).
+1. Create `skills/<skill-name>/` (kebab-case).
+2. Follow [skill-anatomy.md](./docs/skill-anatomy.md) to write `SKILL.md`: frontmatter, then the anatomy sections.
+3. Add optional `references/`, `scripts/`, or `assets/` folders only if the skill needs them.
+4. Self-review against the checklist in skill-anatomy.
+5. Open a PR from a short-lived branch `skill/<name>` with a conventional commit message (`feat:`, `docs:`, `fix:`).
+
+Do not edit the Skills board or Contributors sections in `README.md`. Both are generated
+by `scripts/update-readme.py`, and the board picks up a new skill automatically once the
+PR merges.
+
+### Modifying Existing Skills
+
+- Edit the skill in place; keep changes focused and minimal.
+- Preserve the existing structure and tone.
+- Keep YAML frontmatter valid after edits.
+- If the change is a refinement, prefer a focused edit to that skill over a new folder.
+- Open a PR from `skill/<name>`. The board refreshes automatically on merge; do not edit
+  the generated sections by hand.
+
 
 ### Skill Quality Bar
 
-Skills should be:
+A skill has to earn its place in an agent's context. It should be:
 
-- **Specific** — Actionable steps, not vague advice.
-- **Verifiable** — Clear exit criteria with evidence requirements.
-- **Battle-tested** — Based on real workflows, not theoretical ideals.
-- **Minimal** — Only the content needed to guide the agent correctly.
-
-### Structure
-
-Every new skill must have:
-
-- `SKILL.md` in the skill directory.
-- YAML frontmatter with valid `name` and `description`.
-- These sections: Overview, When to Use, Process, Verification.
+- **Focused**: one skill covers one kind of task. If it tries to cover two unrelated workflows, split it into two.
+- **Strong constraints**: every rule states where it applies and where it does not, so the agent does not apply it blindly.
+- **Safe**: the skill never invents facts and never skips verification. Destructive steps require explicit confirmation.
+- **Cheap in context**: only what the agent needs to act. Move long material into `references/` so it loads on demand.
 
 ### What Not to Do
 
@@ -49,40 +54,9 @@ Every new skill must have:
 - Don't create supporting files unless the skill content exceeds 100 lines.
 - Don't put shared reference material inside skill directories — keep skill-local helpers in `skills/<name>/references/` only.
 
-## Modifying Existing Skills
-
-- Keep changes focused and minimal.
-- Preserve the existing structure and tone.
-- Test that YAML frontmatter remains valid after edits.
-- If your idea is a refinement of an existing skill, prefer a focused edit to that skill over a new directory.
-
-## Skill's Directory Structure
-
-```
-.
-├── skills/
-│   └── <skill-name>/
-│       ├── SKILL.md        # required entry point
-│       ├── references/     # optional: docs loaded on demand
-│       ├── scripts/        # optional: runnable helpers only
-│       └── assets/         # optional: templates and files used in output
-
-```
-
-Rules:
-
-- One skill = one folder, one `SKILL.md` entry point.
-- Optional folders and when to use them:
-  - `references/` — supporting docs the agent loads only when needed (progressive disclosure).
-  - `scripts/` — runnable helpers the skill executes. Add only when the skill includes them; never an empty `scripts/` just to match another skill.
-  - `assets/` — templates, boilerplate, or static files the skill uses in its output.
-- Skill-local helpers go in `skills/<name>/references/`, not repo-level folders.
-- Do not add repo-level `agents/`, `references/`, `commands/`, or `hooks/` without 3+ skills needing them.
-- English only.
-
 ## Language
 
-Skills, docs, and contributions must be written in English.
+Skills, docs, and contributions should be written in English.
 
 - Write `SKILL.md`, references, scripts output, and all documentation in English only.
 - Do not submit translated copies of skills or docs. Translations drift out of sync as the originals evolve and cannot be maintained long-term.
@@ -94,29 +68,21 @@ Before opening a PR, confirm:
 
 - [ ] Frontmatter `name` matches the directory name (kebab-case).
 - [ ] Frontmatter `description` states what the skill does and when to use it.
-- [ ] All four anatomy sections present: Overview, When to Use, Process, Verification.
 - [ ] Every rule or step states where it applies and where it does not.
-- [ ] `README.md` skills table has a row for the new skill.
 - [ ] Written entirely in English (no translated copies).
-- [ ] No org names, no TODO/TBD placeholders.
-- [ ] File sizes respect the Quality Standards below.
+- [ ] File sizes respect the limits in [skill-anatomy.md](./docs/skill-anatomy.md).
+- [ ] Skills board and Contributors sections left untouched (they are generated).
 - [ ] PR comes from a short-lived feature branch with a conventional commit message.
 
-## Quality Standards
+## Submit your Contribution
 
-- One file must not be over 200 lines.
-- Code snippets are lean (15 lines or fewer) and each rule cites evidence (`file:line`) where applicable.
-- No broken links: every relative link must resolve from the repo root.
+1. Fork the repository.
+2. Create a branch from `main`: `skill/<name>` for a skill, `docs/<topic>` for docs.
+3. Add or modify the skill, then self-review against the checklist above.
+4. Open a pull request targeting `main`.
+5. After merge, the bot refreshes the Skills board and Contributors sections, and maintainers delete the merged branch.
 
-## Reporting Issues
-
-Open an issue if you find:
-
-- A skill that gives incorrect or outdated guidance.
-- Missing coverage for a common workflow.
-- Inconsistencies between skills.
-
-Include the affected skill, the relevant excerpt, your context, and what you did instead.
+Give the pull request a conventional title (`feat: add <skill-name>`, `docs: ...`) so the release notes group it correctly.
 
 ## License
 

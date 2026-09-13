@@ -12,4 +12,3 @@ Instructions for AI agents working in this repo. User instructions take preceden
 ## Docs and skills
 
 - Follow `CONTRIBUTING.md` for the contribution process and `docs/skill-anatomy.md` for the skill format.
-- English only. No organization names in prose.
