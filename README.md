@@ -41,11 +41,13 @@ git clone https://github.com/AIAI-Laboratory/skills.git
 
 ---
 
-## All Skills
+## Skills Board
 
-| Skill                                                        | What It Does                                                                             | Use When                                                                           |
-| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| [codebase-replication](skills/codebase-replication/SKILL.md) | Learn conventions from a source repo and apply them to a target repo as rules plus audit | Learning from a repo, copying style, modernizing code like X, replicating patterns |
+<!-- skills-board:start -->
+| Skill | What It Does | Use When |
+| ----- | ------------ | -------- |
+| [codebase-replication](skills/codebase-replication/SKILL.md) | Learn advanced coding rules, syntax idioms, design patterns, file management, and tooling conventions from a source repository and apply them to the user's repository as a reusable rules file plus reusable knowledge pack. | Use this whenever the user says learn from this repo, copy style from, apply patterns from GitHub, modernize my code like X, replicate codebase, or gives a source repo path/URL plus a target repo. Always use for repo-to-repo style transfer even if they don't say skill. |
+<!-- skills-board:end -->
 
 ---
 
@@ -84,14 +86,30 @@ Key design choices:
 .
 ├── skills/
 │   └── codebase-replication/
-│       └── SKILL.md
+│       ├── SKILL.md
+│       └── references/
+├── scripts/
+│   ├── update-readme.py
+│   └── generate-release-notes.py
+├── .github/
+│   ├── workflows/
+│   └── contributors.json
 ├── docs/
 │   ├── getting-started.md
 │   └── skill-anatomy.md
 ├── README.md
 ├── CONTRIBUTING.md
+├── RELEASE-NOTES.md
 └── LICENSE
 ```
+
+---
+
+## Contributors
+
+<!-- contributors:start -->
+_No contributors yet._
+<!-- contributors:end -->
 
 ---
 
