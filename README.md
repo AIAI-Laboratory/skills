@@ -20,14 +20,14 @@ Each skill is process, not prose: when to act, what to check, and what evidence 
 Use with any agent that accepts Markdown instruction files.
 
 ```bash
-npx skills add AIAI-Laboratory/skills                         # install all skills
-npx skills add AIAI-Laboratory/skills --skill <skill-name>    # install one skill
+npx skills add AIAI-Laboratory/aiai-skills                         # install all skills
+npx skills add AIAI-Laboratory/aiai-skills --skill <skill-name>    # install one skill
 ```
 
 Or clone and copy manually:
 
 ```bash
-git clone https://github.com/AIAI-Laboratory/skills.git
+git clone https://github.com/AIAI-Laboratory/aiai-skills.git
 ```
 
 | Agent        | Install                                                                                               |
@@ -35,7 +35,7 @@ git clone https://github.com/AIAI-Laboratory/skills.git
 | Claude Code  | Copy `skills/*/` to `~/.claude/skills/` or use `/plugin` with this repo URL                           |
 | OpenCode     | Copy `skills/*/` to `.opencode/skills/` or `~/.config/opencode/skills/`                               |
 | Cursor       | Copy `skills/*/` to `.cursor/skills/`                                                                 |
-| Antigravity  | Install as native plugin: `agy plugin install https://github.com/AIAI-Laboratory/skills.git`          |
+| Antigravity  | Install as native plugin: `agy plugin install https://github.com/AIAI-Laboratory/aiai-skills.git`          |
 | Codex        | Copy `skills/*/` to `~/.codex/skills/`                                                                |
 | Other agents | Copy the skill folder contents into your agent's instruction directory, see `docs/getting-started.md` |
 
